@@ -1,0 +1,19 @@
+{
+  "name": "latihanpemmob",
+  "version": "1.0.0",
+  "description": "Goalsetter app tutorial",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bayukraka@github.com/bayukraka/latihanpemmob.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bayukraka/latihanpemmob/issues"
+  },
+  "homepage": "https://github.com/bayukraka/latihanpemmob#readme"
+}
