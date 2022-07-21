@@ -8,7 +8,7 @@ const { rawListeners } = require('../models/userModel')
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-    const { name, email, password } = req.body
+    const { name, email, password, role } = req.body
     if(!name || !email || !password || !role){
         res.status(400)
         throw Error('Please add all fields')
