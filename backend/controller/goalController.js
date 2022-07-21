@@ -45,9 +45,14 @@ const updateGoal = asyncHandler (async (req, res)=>{
         throw new Error('Goal not found')
     }
 
-    const updateGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, { new: true})
-    
-    res.status(200).json(updateGoal)
+    const users = await User.findById(req.user.id)
+    if (users.role == "admin" || users.id == req.body.user) {
+        const updateGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, { new: true})
+        res.status(200).json(updateGoal)
+    } else {
+        res.status(400)
+        throw new Error('Invalid credentials')
+    }
 })
 
 // @desc    Delete goals
