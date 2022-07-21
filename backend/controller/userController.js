@@ -9,7 +9,7 @@ const { rawListeners } = require('../models/userModel')
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body
-    if(!name || !email || !password){
+    if(!name || !email || !password || !role){
         res.status(400)
         throw Error('Please add all fields')
     }
@@ -30,7 +30,8 @@ const registerUser = asyncHandler(async (req, res) => {
     const user = await User.create({
         name,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        role
     })
 
     if(user){
@@ -38,6 +39,7 @@ const registerUser = asyncHandler(async (req, res) => {
             _id: user.id,
             name: user.name,
             email: user.email,
+            role: user.role,
             token: generateToken(user._id)
         })
     } else {
