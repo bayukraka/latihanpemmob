@@ -65,7 +65,13 @@ const deleteGoal = asyncHandler (async (req, res)=>{
         throw new Error('Goal not found')
     }
 
-    await goal.remove()
+    const users = await User.findById(req.user.id)
+    if (users.role == "admin" || users.id == goal.user) {
+        await goal.remove()
+    } else {
+        res.status(400)
+        throw new Error('Invalid credentials')
+    }
 
     res.status(200).json({id: req.params.id})
 })
